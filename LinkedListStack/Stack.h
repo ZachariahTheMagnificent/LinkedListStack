@@ -10,7 +10,12 @@ public:
 	Stack() = default;
 
 	~Stack() {
-		delete e;
+		auto node_to_delete = e;
+		while(node_to_delete != nullptr) {
+			auto temp = node_to_delete->Previous;
+			delete node_to_delete;
+			node_to_delete = temp;
+		}
 		e = nullptr;
 	}
 
